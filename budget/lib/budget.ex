@@ -20,3 +20,6 @@ defmodule Budget do
     initial - spending
   end
 end
+
+#in terminal: 
+# mix run -e "Budget.current_balance(100, 50) |> IO.puts"
