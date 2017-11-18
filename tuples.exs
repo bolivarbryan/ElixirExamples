@@ -6,14 +6,20 @@ defmodule Account do
   def parse_file({:error, _ }) do
     IO.puts "Error parsing file"
   end
-
-  def balance(transactions, options \\ []) do
-    currency = options[:currency] || "dolar"
-    symbol = options[:symbol] || "$"
-    balance = calculate_balance(transactions)
-    "Balance in #{currency}: #{symbol}#{balance}"
-  end
 end
 
 File.read("transactions.csv")
 |> Account.parse_file()
+
+#printer
+
+defmodule Printer do
+  def greet(name, options \\ [] ) do
+    greeting = options[:prefix] || "Hello"
+    "#{greeting}, #{name}"
+  end
+end
+
+Printer.greet("Carlos") |> IO.puts
+Printer.greet("Sergio", prefix: "O HAI") |> IO.puts
+Printer.greet("Dolores", prefix: "Olá") |> IO.puts
